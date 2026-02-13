@@ -1,9 +1,13 @@
-export default function HomePage() {
+import { Header } from "@/components/Header";
+
+export default async function HomePage() {
+  await new Promise((r) => setTimeout(r, 1000)); // Simulate a delay for loading
+
+  console.log("asd");
+
   return (
     <div>
-      <h1 className="text-6xl font-bold text-blue-500 hover:text-white hover:bg-blue-500 transition duration-300">
-        Home Page
-      </h1>
+      <Header />
     </div>
   );
 }
