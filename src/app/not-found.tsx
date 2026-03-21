@@ -5,12 +5,14 @@ export default function NotFoundPage() {
     <ErrorMessage
       content={
         <p>
-          Erro 404 - A página que você está tentando acessar não existe nesse
-          site.
+          Parece que a página que você procura foi demolida para dar lugar a uma
+          nova via expressa hiperspacial. Infelizmente, os planos estavam em
+          exposição no departamento de planejamento local em Alpha Centauri há
+          50 anos terrestres, então você deveria saber.
         </p>
       }
       contentTitle="404"
-      pageTitle="404 - Página não encontrada"
+      pageTitle="404 - Página Demolida"
     />
   );
 }

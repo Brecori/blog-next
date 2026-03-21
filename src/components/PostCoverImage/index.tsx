@@ -5,21 +5,11 @@ import { ComponentProps, FC } from "react";
 
 type PostCoverImageProps = {
   imageProps: ComponentProps<typeof Image>;
-  linkProps: ComponentProps<typeof Link>;
 };
 
-export const PostCoverImage: FC<PostCoverImageProps> = ({
-  imageProps,
-  linkProps,
-}) => {
+export const PostCoverImage: FC<PostCoverImageProps> = ({ imageProps }) => {
   return (
-    <Link
-      {...linkProps}
-      className={clsx(
-        "w-full h-full overflow-hidden rounded-xl",
-        linkProps.className,
-      )}
-    >
+    <div className={clsx("w-full h-full overflow-hidden rounded-xl")}>
       <Image
         {...imageProps}
         className={clsx(
@@ -27,6 +17,6 @@ export const PostCoverImage: FC<PostCoverImageProps> = ({
           imageProps.className,
         )}
       />
-    </Link>
+    </div>
   );
 };

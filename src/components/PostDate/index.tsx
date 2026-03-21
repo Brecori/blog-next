@@ -8,7 +8,7 @@ type PostDateProps = {
 export const PostDate: FC<PostDateProps> = ({ dateTime }) => {
   return (
     <time
-      className="text-slate-600 text-sm/tight"
+      className="text-slate-300 text-sm/tight"
       dateTime={formatDatetime(dateTime)}
       title={formatRelativeDate(dateTime)}
     >

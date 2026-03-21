@@ -6,10 +6,10 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "The blog",
-    template: "%s | The blog",
+    default: "Pantry 42",
+    template: "%s | Pantry 42",
   },
-  description: "Descrição do blog",
+  description: "Pantry 42 - receitas criativas",
 };
 
 export default function RootLayout({

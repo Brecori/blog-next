@@ -1,7 +1,7 @@
 "use client";
 
 import { ErrorMessage } from "@/components/ErrorMessage";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 
 type RootErrorPageProps = {
   error: Error;
@@ -14,7 +14,7 @@ export default function RootErrorPage({ error }: RootErrorPageProps) {
   }, [error]);
   return (
     <ErrorMessage
-      content="Ocorreu um erro do qual nossa aplicação não conseguiu se recuperar. Tente recarregar a página ou volte mais tarde."
+      content="Infelizmente, nossas receitas espaciais estão temporariamente indisponíveis. Aconselhamos não entrar em pânico e tentar recarregar a página."
       contentTitle="501"
       pageTitle="Internal Server Error"
     />

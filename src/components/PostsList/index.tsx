@@ -2,6 +2,7 @@ import { FC } from "react";
 import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
 import { findAllPublicPostsCached } from "@/lib/post/queries";
+import Link from "next/link";
 
 export const PostsList: FC = async () => {
   const posts = await findAllPublicPostsCached();
@@ -12,8 +13,9 @@ export const PostsList: FC = async () => {
         const postLink = `/post/${post.slug}`;
 
         return (
-          <div
+          <Link
             className="flex flex-col gap-4 group cursor-pointer"
+            href={postLink}
             key={post.id}
           >
             <PostCoverImage
@@ -23,18 +25,14 @@ export const PostsList: FC = async () => {
                 src: post.coverImageUrl,
                 alt: post.title,
               }}
-              linkProps={{
-                href: postLink,
-              }}
             />
             <PostSummary
               postHeading="h2"
-              postLink={postLink}
               createdAt={post.createdAt}
               excerpt={post.excerpt}
               title={post.title}
             />
-          </div>
+          </Link>
         );
       })}
     </div>

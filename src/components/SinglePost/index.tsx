@@ -15,6 +15,7 @@ export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
   return (
     <article className="mb-16">
       <header className="group flex flex-col gap-4 mb-6">
+        <PostHeading>{post.title}</PostHeading>
         <Image
           src={post.coverImageUrl}
           width={1200}
@@ -23,7 +24,6 @@ export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
           className="rounded-xl"
         />
 
-        <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
         <p>
           {post.author} | <PostDate dateTime={post.createdAt} />
         </p>

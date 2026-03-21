@@ -7,7 +7,7 @@ export const Footer: FC = () => {
       <p>
         <span>Copyright &copy;{new Date().getFullYear()} - </span>
         <Link href="/" className="underline">
-          The Blog
+          Pantry 42
         </Link>
       </p>
     </footer>
