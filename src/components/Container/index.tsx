@@ -6,8 +6,8 @@ type ContainerProps = {
 
 export const Container: FC<ContainerProps> = ({ children }) => {
   return (
-    <div className="text-slate-100 bg-slate-950 min-h-screen ">
-      <div className="max-w-5xl mx-auto px-8">{children}</div>
+    <div className="text-slate-100 bg-slate-900 min-h-screen ">
+      <div className="max-w-360 mx-auto px-8">{children}</div>
     </div>
   );
 };

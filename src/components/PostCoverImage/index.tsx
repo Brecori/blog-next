@@ -5,11 +5,20 @@ import { ComponentProps, FC } from "react";
 
 type PostCoverImageProps = {
   imageProps: ComponentProps<typeof Image>;
+  containerClassName?: string;
 };
 
-export const PostCoverImage: FC<PostCoverImageProps> = ({ imageProps }) => {
+export const PostCoverImage: FC<PostCoverImageProps> = ({
+  imageProps,
+  containerClassName,
+}) => {
   return (
-    <div className={clsx("w-full h-full overflow-hidden rounded-xl")}>
+    <div
+      className={clsx(
+        "w-full h-full overflow-hidden rounded-2xl",
+        containerClassName,
+      )}
+    >
       <Image
         {...imageProps}
         className={clsx(

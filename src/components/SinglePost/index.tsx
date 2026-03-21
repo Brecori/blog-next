@@ -13,7 +13,7 @@ export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
   const post = await findPostBySlugCached(slug);
 
   return (
-    <article className="mb-16">
+    <article className="pt-40 pb-16">
       <header className="group flex flex-col gap-4 mb-6">
         <PostHeading>{post.title}</PostHeading>
         <Image

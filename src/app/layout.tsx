@@ -3,6 +3,12 @@ import { Container } from "@/components/Container";
 import { Header } from "@/components/Header";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Space_Grotesk } from "next/font/google";
+
+const font = Space_Grotesk({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -19,14 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
-        <Container>
-          <Header />
-
-          {children}
-
-          <Footer />
-        </Container>
+      <body className={font.className}>
+        <Navbar />
+        <Container>{children}</Container>
+        <Footer />
       </body>
     </html>
   );

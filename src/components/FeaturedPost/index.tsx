@@ -10,10 +10,10 @@ export const FeaturedPost: FC = async () => {
   const postLink = `/post/${post.slug}`;
 
   return (
-    <section className="">
+    <section className="pt-40 pb-16">
       <Link
         href={postLink}
-        className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group cursor-pointer"
+        className="grid grid-cols-1 gap-8  sm:grid-cols-2 group cursor-pointer"
       >
         <PostCoverImage
           imageProps={{

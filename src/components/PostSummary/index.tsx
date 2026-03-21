@@ -20,7 +20,9 @@ export const PostSummary: FC<PostSummaryProps> = ({
       <PostDate dateTime={createdAt} />
 
       <PostHeading as={postHeading}>{title}</PostHeading>
-      <p>{excerpt}</p>
+      <p className="overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+        {excerpt}
+      </p>
     </div>
   );
 };
