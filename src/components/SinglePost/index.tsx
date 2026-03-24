@@ -19,7 +19,7 @@ export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
         <Image
           src={post.coverImageUrl}
           width={1200}
-          height={720}
+          height={800}
           alt={post.title}
           className="rounded-xl"
         />
