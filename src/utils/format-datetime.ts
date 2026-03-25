@@ -17,3 +17,11 @@ export const formatRelativeDate = (rawDate: string): string => {
     locale: ptBR,
   });
 };
+
+export const formatHour = (timestamp: number): string => {
+  const date = new Date(timestamp);
+
+  return format(date, "HH:mm:ss", {
+    locale: ptBR,
+  });
+};
