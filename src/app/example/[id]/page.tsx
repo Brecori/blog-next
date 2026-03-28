@@ -1,8 +1,8 @@
 import { revalidateExampleAction } from "@/actions/revalidate-example";
 import { formatHour } from "@/utils/format-datetime";
 
-export const dynamic = "force-static";
-export const revalidate = 30;
+// export const dynamic = "force-static";
+// export const revalidate = 30;
 
 export default async function ExampleDynamicPage({
   params,
@@ -12,10 +12,23 @@ export default async function ExampleDynamicPage({
   const { id } = await params;
   const hour = formatHour(Date.now());
 
+  const response = await fetch("https://randomuser.me/api/?results=1", {
+    next: {
+      tags: ["randomuser"],
+      revalidate: 10,
+    },
+  });
+
+  const json = await response.json();
+
+  const name = json.results[0].name.first;
+
+  console.log(json.results[0].name.first);
+
   return (
     <main className="min-h-150 pt-32 text-4xl font-bold">
       <div>
-        Hora: {hour} / Id: {id}
+        Name: {name} / Hora: {hour} / Id: {id}
       </div>
 
       <form action={revalidateExampleAction} className="py-16">
