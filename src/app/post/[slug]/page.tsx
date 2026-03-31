@@ -1,12 +1,20 @@
 import { SinglePost } from "@/components/SinglePost";
 import { SpinLoader } from "@/components/SpinLoader";
-import { findPostBySlugCached } from "@/lib/post/queries";
+import {
+  findFirstPublicPostCached,
+  findPostBySlugCached,
+} from "@/lib/post/queries";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
 type PostSlugPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateStaticParams() {
+  const post = await findFirstPublicPostCached();
+  return [{ slug: post.slug }];
+}
 
 export const generateMetadata = async ({
   params,

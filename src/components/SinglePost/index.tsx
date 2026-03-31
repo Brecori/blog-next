@@ -1,6 +1,6 @@
 import { findPostBySlugCached } from "@/lib/post/queries";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { PostHeading } from "../PostHeading";
 import { PostDate } from "../PostDate";
 import { SafeMarkdown } from "../SafeMarkdown";
@@ -25,7 +25,10 @@ export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
         />
 
         <p>
-          {post.author} | <PostDate dateTime={post.createdAt} />
+          {post.author} |{" "}
+          <Suspense>
+            <PostDate dateTime={post.createdAt} />
+          </Suspense>
         </p>
       </header>
       <p className="text-xl mb-6">{post.excerpt}</p>

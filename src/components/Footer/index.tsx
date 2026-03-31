@@ -1,7 +1,7 @@
 import { Rocket } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, Suspense } from "react";
+import Year from "../Year";
 
 export const Footer: FC = () => {
   return (
@@ -18,10 +18,15 @@ export const Footer: FC = () => {
           </p>
         </div>
         <div className="flex gap-4 w-full justify-center text-center lg:justify-end lg:text-start">
-          <p className="">
-            &copy; {new Date().getFullYear()} Pantry 42 - Exploradores do
-            universo culinário.
-          </p>
+          <Suspense>
+            <p>
+              &copy;{" "}
+              <Suspense>
+                <Year />
+              </Suspense>{" "}
+              Pantry 42 - Exploradores do universo culinário.
+            </p>
+          </Suspense>
           <Rocket width={24} height={24} />
         </div>
       </div>

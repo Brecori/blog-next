@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { PostHeading } from "../PostHeading";
 import { PostDate } from "../PostDate";
 
@@ -17,7 +17,9 @@ export const PostSummary: FC<PostSummaryProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-2 sm:justify-center">
-      <PostDate dateTime={createdAt} />
+      <Suspense>
+        <PostDate dateTime={createdAt} />
+      </Suspense>
 
       <PostHeading as={postHeading}>{title}</PostHeading>
       <p className="overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">

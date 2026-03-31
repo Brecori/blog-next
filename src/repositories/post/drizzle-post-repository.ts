@@ -23,6 +23,17 @@ export class DrizzlePostRepository implements PostRepository {
     return post;
   }
 
+  async findFirstPublic(): Promise<PostModel> {
+    const post = await drizzleDb.query.posts.findFirst({
+      where: (posts, { eq }) => eq(posts.published, true),
+      orderBy: (posts, { desc }) => desc(posts.createdAt),
+    });
+
+    if (!post) throw new Error(`No public post found`);
+
+    return post;
+  }
+
   async findAll(): Promise<PostModel[]> {
     const posts = await drizzleDb.query.posts.findMany({
       orderBy: (posts, { desc }) => desc(posts.createdAt),
@@ -42,18 +53,3 @@ export class DrizzlePostRepository implements PostRepository {
     return post;
   }
 }
-
-// (async () => {
-//   const repo = new DrizzlePostRepository();
-//   const posts = await repo.findAll();
-
-//   const postBySlug = await repo.findBySlugPublic("bolo-de-eclipse-de-plutao");
-//   console.log(postBySlug);
-
-//   const postById = await repo.findById("bc9a540f-66a9-4ab0-8d50-6216ab1cac53");
-//   console.log(postById);
-
-//   posts.map((post) => {
-//     console.log(post.slug, post.id, post.published);
-//   });
-// })();
