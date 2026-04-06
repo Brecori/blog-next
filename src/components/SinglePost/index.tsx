@@ -1,4 +1,4 @@
-import { findPostBySlugCached } from "@/lib/post/queries";
+import { findPublicPostBySlugCached } from "@/lib/post/queries/public";
 import Image from "next/image";
 import { FC, Suspense } from "react";
 import { PostHeading } from "../PostHeading";
@@ -10,7 +10,7 @@ type SinglePostProps = {
 };
 
 export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
-  const post = await findPostBySlugCached(slug);
+  const post = await findPublicPostBySlugCached(slug);
 
   return (
     <article className="pt-40 pb-16">

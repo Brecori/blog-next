@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
-import { findAllPublicPostsCached } from "@/lib/post/queries";
+import { findAllPublicPostsCached } from "@/lib/post/queries/public";
 import Link from "next/link";
 
 export const FeaturedPost: FC = async () => {
