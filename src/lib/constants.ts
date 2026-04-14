@@ -1,1 +1,1 @@
-export const SIM_WAIT_TIME = 0;
+export const SIM_WAIT_TIME = 1000;

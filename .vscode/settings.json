@@ -4,5 +4,6 @@
   "code-runner.ignoreSelection": true,
   "code-runner.executorMap": {
     "typescript": "clear; npx tsx"
-  }
+  },
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib"
 }

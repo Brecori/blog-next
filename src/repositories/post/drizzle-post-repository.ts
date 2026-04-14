@@ -7,7 +7,6 @@ import { SIM_WAIT_TIME } from "@/lib/constants";
 export class DrizzlePostRepository implements PostRepository {
   async findAllPublic(): Promise<PostModel[]> {
     await asyncDelay(SIM_WAIT_TIME, true);
-    console.log("findAllPublic", Date.now());
 
     const posts = await drizzleDb.query.posts.findMany({
       orderBy: (posts, { desc }) => desc(posts.createdAt),
