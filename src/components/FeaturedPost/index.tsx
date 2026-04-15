@@ -3,9 +3,19 @@ import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
 import { findAllPublicPostsCached } from "@/lib/post/queries/public";
 import Link from "next/link";
+import { ErrorMessage } from "../ErrorMessage";
 
 export const FeaturedPost: FC = async () => {
   const posts = await findAllPublicPostsCached();
+
+  if (posts.length === 0)
+    return (
+      <ErrorMessage
+        contentTitle="Ops!"
+        content="Ainda não há nenhuma receita intergalática."
+      />
+    );
+
   const post = posts[0];
   const postLink = `/post/${post.slug}`;
 

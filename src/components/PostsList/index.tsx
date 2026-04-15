@@ -7,6 +7,8 @@ import Link from "next/link";
 export const PostsList: FC = async () => {
   const posts = await findAllPublicPostsCached();
 
+  if (posts.length === 0) return null;
+
   return (
     <div className="grid grid-cols-1 gap-8 pb-16 sm:grid-cols-2 lg:grid-cols-3">
       {posts.slice(1).map((post) => {

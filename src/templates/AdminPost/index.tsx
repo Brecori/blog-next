@@ -1,4 +1,5 @@
 import { DeletePostButton } from "@/components/Admin/DeletePostButton";
+import { ErrorMessage } from "@/components/ErrorMessage";
 import { findAllPostAdmin } from "@/lib/post/queries/admin";
 import clsx from "clsx";
 import Link from "next/link";
@@ -6,6 +7,14 @@ import { FC } from "react";
 
 export const AdminPostPageTemplate: FC = async () => {
   const posts = await findAllPostAdmin();
+
+  if (posts.length === 0)
+    return (
+      <ErrorMessage
+        contentTitle="Ops!"
+        content="Ainda não há nenhuma receita intergalática. Bora criar?"
+      />
+    );
 
   return (
     <div className="py-32">
@@ -20,7 +29,7 @@ export const AdminPostPageTemplate: FC = async () => {
           >
             <Link
               href={`/admin/post/${post.id}`}
-              className="hover:text-slate-300 transition"
+              className="hover:text-slate-400 transition"
             >
               {post.title}
             </Link>
@@ -34,8 +43,6 @@ export const AdminPostPageTemplate: FC = async () => {
           </div>
         );
       })}
-
-
     </div>
   );
 };

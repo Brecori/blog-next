@@ -52,8 +52,7 @@ export class DrizzlePostRepository implements PostRepository {
   async findById(id: string): Promise<PostModel> {
     await asyncDelay(SIM_WAIT_TIME, true);
     const post = await drizzleDb.query.posts.findFirst({
-      where: (posts, { eq, and }) =>
-        and(eq(posts.id, id), eq(posts.published, true)),
+      where: (posts, { eq }) => eq(posts.id, id),
     });
 
     if (!post) throw new Error(`Post with id ${id} not found`);
