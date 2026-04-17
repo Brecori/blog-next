@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FC } from "react";
 
-export const AdminPostPageTemplate: FC = async () => {
+export const AdminPostTemplate: FC = async () => {
   const posts = await findAllPostAdmin();
 
   if (posts.length === 0)
@@ -17,7 +17,7 @@ export const AdminPostPageTemplate: FC = async () => {
     );
 
   return (
-    <div className="py-32">
+    <div>
       {posts.map((post) => {
         return (
           <div

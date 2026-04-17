@@ -1,4 +1,4 @@
-import { AdminPostIdTemplate } from "@/templates/AdminPostId";
+import { AdminPostIdTemplate } from "@/templates/Admin/AdminPostId";
 import { Suspense } from "react";
 
 type AdminPostIdPageProps = {

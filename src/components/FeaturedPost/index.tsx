@@ -20,7 +20,10 @@ export const FeaturedPost: FC = async () => {
   const postLink = `/post/${post.slug}`;
 
   return (
-    <section className="pt-40 pb-16">
+    <section className="pb-16">
+      <h1 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-indigo-300">
+        Destaque
+      </h1>
       <Link
         href={postLink}
         className="grid grid-cols-1 gap-8  sm:grid-cols-2 group cursor-pointer"

@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, ReactNode } from "react";
+import { Button } from "../Button";
 
 type DialogProps = {
   isVisible?: boolean;
@@ -47,21 +48,17 @@ export const Dialog: FC<DialogProps> = ({
         </h3>
         <div id="dialog-content">{content}</div>
         <div className="flex items-center justify-around">
-          <button
-            className="bg-slate-200 text-slate-950 hover:bg-slate-300 transition flex items-center justify-center gap-2 px-4 py-2 rounded-lg cursor-pointer disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed"
+          <Button
             autoFocus
             onClick={handleCancel}
             disabled={disabled}
+            variant="danger"
           >
             Cancelar
-          </button>
-          <button
-            className="bg-blue-500 text-blue-100 hover:bg-blue-600 transition flex items-center justify-center gap-2 px-4 py-2 rounded-lg cursor-pointer disabled:bg-slate-200 disabled:text-slate-400  disabled:cursor-not-allowed"
-            onClick={onConfirm}
-            disabled={disabled}
-          >
+          </Button>
+          <Button onClick={onConfirm} disabled={disabled} variant="default">
             OK
-          </button>
+          </Button>
         </div>
       </div>
     </div>

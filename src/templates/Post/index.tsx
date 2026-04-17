@@ -1,19 +1,19 @@
 import { findPublicPostBySlugCached } from "@/lib/post/queries/public";
 import Image from "next/image";
 import { FC, Suspense } from "react";
-import { PostHeading } from "../PostHeading";
-import { PostDate } from "../PostDate";
-import { SafeMarkdown } from "../SafeMarkdown";
+import { PostHeading } from "../../components/PostHeading";
+import { PostDate } from "../../components/PostDate";
+import { SafeMarkdown } from "../../components/SafeMarkdown";
 
-type SinglePostProps = {
+type PostTemplateProps = {
   slug: string;
 };
 
-export const SinglePost: FC<SinglePostProps> = async ({ slug }) => {
+export const PostTemplate: FC<PostTemplateProps> = async ({ slug }) => {
   const post = await findPublicPostBySlugCached(slug);
 
   return (
-    <article className="pt-40 pb-16">
+    <article className="">
       <header className="group flex flex-col gap-4 mb-6">
         <PostHeading>{post.title}</PostHeading>
         <Image

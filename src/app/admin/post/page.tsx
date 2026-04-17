@@ -1,5 +1,5 @@
 import { SpinLoader } from "@/components/SpinLoader";
-import { AdminPostPageTemplate } from "@/templates/AdminPost";
+import { AdminPostTemplate } from "@/templates/Admin/AdminPost";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function AdminPostPage() {
   return (
     <Suspense fallback={<SpinLoader className="min-h-screen" />}>
-      <AdminPostPageTemplate />
+      <AdminPostTemplate />
     </Suspense>
   );
 }

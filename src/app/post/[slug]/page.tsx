@@ -1,4 +1,4 @@
-import { SinglePost } from "@/components/SinglePost";
+import { PostTemplate } from "@/templates/Post";
 import { SpinLoader } from "@/components/SpinLoader";
 import {
   findFirstPublicPostCached,
@@ -33,7 +33,7 @@ export default async function PostSlugPage({ params }: PostSlugPageProps) {
 
   return (
     <Suspense fallback={<SpinLoader className="min-h-80 mb-16" />}>
-      <SinglePost slug={slug} />
+      <PostTemplate slug={slug} />
     </Suspense>
   );
 }
