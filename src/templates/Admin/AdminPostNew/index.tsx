@@ -1,5 +1,6 @@
 "use client";
 
+import { ImageUploader } from "@/components/Admin/ImageUploader";
 import { Button } from "@/components/Button";
 import { InputCheckbox } from "@/components/InputCheckbox";
 import { InputText } from "@/components/InputText";
@@ -13,6 +14,7 @@ export const AdminPostNewTemplate: FC = () => {
     <form action="">
       <div className="flex flex-col gap-6">
         <InputText labelText="Nome" placeholder="Digite algo..." />
+        <ImageUploader />
         <InputText
           labelText="Sobrenome"
           placeholder="Digite algo..."
@@ -34,3 +36,4 @@ export const AdminPostNewTemplate: FC = () => {
     </form>
   );
 };
+
