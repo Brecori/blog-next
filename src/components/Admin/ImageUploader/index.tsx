@@ -1,13 +1,16 @@
 "use client";
 
+import { uploadImageAction } from "@/actions/upload/upload-image-action";
 import { Button } from "@/components/Button";
 import { IMAGE_UPLOAD_MAX_SIZE } from "@/lib/constants";
 import { ImageUp } from "lucide-react";
-import { FC, useRef } from "react";
+import { FC, useRef, useState, useTransition } from "react";
 import { toast } from "react-toastify";
 
 export const ImageUploader: FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploading, startTransition] = useTransition();
+  const [imgUrl, setImgUrl] = useState<string>("");
 
   const handleClick = () => {
     if (!fileInputRef.current) return;
@@ -16,10 +19,18 @@ export const ImageUploader: FC = () => {
   };
 
   const handleFileChange = () => {
-    if (!fileInputRef.current) return;
+    toast.dismiss();
+    if (!fileInputRef.current) {
+      setImgUrl("");
+      return;
+    }
 
+    const fileInput = fileInputRef.current;
     const file = fileInputRef.current.files?.[0];
-    if (!file) return;
+    if (!file) {
+      setImgUrl("");
+      return;
+    }
 
     if (file.type.split("/")[0] !== "image") {
       toast.error(
@@ -27,6 +38,7 @@ export const ImageUploader: FC = () => {
       );
 
       fileInputRef.current.value = "";
+      setImgUrl("");
       return;
     }
 
@@ -37,24 +49,46 @@ export const ImageUploader: FC = () => {
       );
 
       fileInputRef.current.value = "";
+      setImgUrl("");
       return;
     }
 
     const formData = new FormData();
     formData.append("file", file);
 
-    // TODO: Criar action de upload de arquivo
-    console.log("Arquivo selecionado:", formData);
+    startTransition(async () => {
+      const result = await uploadImageAction(formData);
 
-    fileInputRef.current.value = "";
+      if (result.error) {
+        toast.error(`Erro ao enviar a imagem: ${result.error}`);
+        fileInput.value = "";
+        setImgUrl("");
+        return;
+      }
+
+      setImgUrl(result.url);
+      toast.success(`Imagem enviada com sucesso!`);
+    });
+
+    fileInput.value = "";
   };
 
   return (
-    <div className="flex flex-col gap-2 items-start py-4">
-      <Button type="button" onClick={handleClick}>
+    <div className="flex flex-col gap-4 items-start py-4">
+      <Button type="button" onClick={handleClick} disabled={isUploading}>
         <ImageUp />
         Upload Image
       </Button>
+
+      {!!imgUrl && (
+        <div className="flex flex-col gap-4">
+          <p>URL: {imgUrl}</p>
+
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imgUrl} alt="Uploaded" className="max-w-xs rounded-lg" />
+        </div>
+      )}
+
       <input
         ref={fileInputRef}
         className="hidden"
@@ -62,6 +96,7 @@ export const ImageUploader: FC = () => {
         name="file"
         accept="image/*"
         onChange={handleFileChange}
+        disabled={isUploading}
       />
     </div>
   );
